@@ -1,0 +1,144 @@
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import {
+  Box,
+  Container,
+  TextField,
+  Typography,
+  Button,
+  Grid,
+  InputAdornment,
+  IconButton,
+  Alert,
+} from "@mui/material";
+import React, { useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { elct } from "../images";
+// import { useAuth } from "../context/AuthContext";
+import { auth } from "../firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
+
+function Login() {
+  const [error, setError] = useState("");
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+    showPassword: false,
+  });
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  // const { login } = useAuth();
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    // console.log(emailRef.current.value);
+    // console.log(passwordRef.current);
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        emailRef.current.value,
+        passwordRef.current.value
+      );
+      // Signed in
+      const user = userCredential.user;
+      console.log(user.email);
+      // ...
+    } catch (error) {
+      const errorCode = error.code;
+      setError({ error: errorCode });
+      // const errorMessage = error.message;
+    }
+  }
+
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+  };
+
+  const handleClickShowPassword = () => {
+    setValues({ ...values, showPassword: !values.showPassword });
+  };
+
+  const handleMouseDownPassword = (e) => {
+    e.preventDefault();
+  };
+  return (
+    <Container maxWidth="sm">
+      <Box
+        sx={{
+          marginTop: 10,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          boxShadow: 5,
+        }}
+      >
+        <img src={elct} width={80} alt="Picha ya elct" className=" mt-3 " />
+        <Typography component="h1" variant="h4">
+          Ingia kwenye akaunti yako
+        </Typography>
+        {error.error && (
+          <Alert severity="error" sx={{ width: "100%" }}>
+            {error.error}
+          </Alert>
+        )}
+        <Box
+          component="form"
+          onSubmit={handleSubmit}
+          sx={{ m: 4, textAlign: "center" }}
+        >
+          <TextField
+            label="Email au namba ya simu"
+            fullWidth
+            margin="normal"
+            required
+            id="email"
+            name="email"
+            onChange={handleChange("email")}
+            inputRef={emailRef}
+          />
+          <TextField
+            name="password"
+            label="Ingiza nywila yako"
+            fullWidth
+            required
+            margin="normal"
+            type={values.showPassword ? "text" : "password"}
+            onChange={handleChange("password")}
+            inputRef={passwordRef}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          />
+          <Button
+            type="submit"
+            // onClick={() => setError()}
+            variant="contained"
+            sx={{ my: 2 }}
+          >
+            Sign in
+          </Button>
+          <Grid container>
+            <Grid item xs>
+              <Link to="/signup">Umesahau nywila?</Link>
+            </Grid>
+            <Grid item>
+              <Link to="/signup">Je, huna akaunti ya usharika?</Link>
+            </Grid>
+          </Grid>
+        </Box>
+      </Box>
+    </Container>
+  );
+}
+
+export default Login;
