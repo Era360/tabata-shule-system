@@ -76,10 +76,13 @@ function Login() {
           boxShadow: 5,
         }}
       >
-        <img src={elct} width={80} alt="Picha ya elct" className=" mt-3 " />
-        <Typography component="h1" variant="h4">
-          Ingia kwenye akaunti yako
+        <Typography
+          variant="h5"
+          className="text-center mt-4 text-decoration-underline fw-bold"
+        >
+          KKKT USHARIKA WA TABATA SHULE
         </Typography>
+        <img src={elct} width={80} alt="Picha ya elct" className=" mt-3 " />
         {error.error && (
           <Alert severity="error" sx={{ width: "100%" }}>
             {error.error}
