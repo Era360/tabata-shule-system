@@ -11,7 +11,7 @@ import {
   Alert,
 } from "@mui/material";
 import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { elct } from "../images";
 // import { useAuth } from "../context/AuthContext";
 import { auth } from "../firebase";
@@ -19,11 +19,13 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 
 function Login() {
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const [values, setValues] = useState({
     email: "",
     password: "",
     showPassword: false,
   });
+  let navigate = useNavigate();
   const emailRef = useRef();
   const passwordRef = useRef();
   // const { login } = useAuth();
@@ -33,6 +35,7 @@ function Login() {
     // console.log(emailRef.current.value);
     // console.log(passwordRef.current);
     try {
+      setLoading(true);
       const userCredential = await signInWithEmailAndPassword(
         auth,
         emailRef.current.value,
@@ -41,12 +44,14 @@ function Login() {
       // Signed in
       const user = userCredential.user;
       console.log(user.email);
+      navigate("/");
       // ...
     } catch (error) {
       const errorCode = error.code;
       setError({ error: errorCode });
       // const errorMessage = error.message;
     }
+    setLoading(false);
   }
 
   const handleChange = (prop) => (event) => {
@@ -121,7 +126,7 @@ function Login() {
           />
           <Button
             type="submit"
-            // onClick={() => setError()}
+            disabled={loading}
             variant="contained"
             sx={{ my: 2 }}
           >

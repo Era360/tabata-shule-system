@@ -14,13 +14,15 @@ import {
   Alert,
 } from "@mui/material";
 import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import { useAuth } from "../context/AuthContext";
 import { auth } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { elct } from "../images";
 
 function Register() {
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -28,19 +30,14 @@ function Register() {
     lastname: "",
     showPassword: false,
   });
-  const [loading, setLoading] = useState(false);
-
+  let navigate = useNavigate();
   const firstnameRef = useRef(null);
   const lastnameRef = useRef(null);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
-  //   const { signup, error } = useAuth();
-  const [errorMessage, setErrorMessage] = useState("");
 
   async function handleSubmit(e) {
     e.preventDefault();
-    // console.log(emailRef.current.value);
-    // console.log(passwordRef.current);
     try {
       setErrorMessage("");
       setLoading(true);
@@ -52,8 +49,9 @@ function Register() {
       // Signed in
       const user = userCredential.user;
       console.log(user.email);
+      navigate("/");
     } catch (error) {
-      //   const errorCode = error.code;
+      // failed to create account
       const errorMessage = error.code;
       setErrorMessage({ error: errorMessage });
       // setError("Imeshindikana kutengeneza akaunti");
