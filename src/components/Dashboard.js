@@ -97,6 +97,7 @@ function Dashboard() {
         duration: theme.transitions.duration.leavingScreen,
       }),
       marginLeft: `-${drawerWidth}px`,
+      width: "100%",
       ...(open && {
         transition: theme.transitions.create("margin", {
           easing: theme.transitions.easing.easeOut,
@@ -138,7 +139,7 @@ function Dashboard() {
     <Container>
       <ThemeProvider theme={apptheme}>
         <Box sx={{ display: "flex" }}>
-          <CssBaseline />
+          {/* <CssBaseline /> */}
           <AppBar position="fixed" open={open}>
             <Toolbar>
               <IconButton
@@ -156,22 +157,19 @@ function Dashboard() {
               <Box sx={{ flexGrow: 1 }} />
               <IconButton
                 size="large"
-                id="fade-button"
-                aria-controls="fade-menu"
                 aria-haspopup="true"
                 aria-expanded={nots_open ? "true" : undefined}
                 onClick={handleNotsClick}
               >
-                <Badge badgeContent={17} color="error">
+                <Badge badgeContent={3} color="error">
                   <Notifications />
                 </Badge>
               </IconButton>
               <Menu
-                id="fade-menu"
-                MenuListProps={{
-                  "aria-labelledby": "fade-button",
-                }}
                 anchorEl={nots}
+                // sx={{
+                //   transform: "translate(-2%, -10%)",
+                // }}
                 open={nots_open}
                 onClose={() => setNots(null)}
                 transformOrigin={{ horizontal: "right", vertical: "top" }}
@@ -278,7 +276,7 @@ function Dashboard() {
             )}
             {
               {
-                nyumbani: <Nyumbani />,
+                nyumbani: <Nyumbani curruser={currentUser.email} />,
                 waumini: <Waumini />,
                 matoleo: <Matoleo />,
                 matangazo: <Matangazo />,
