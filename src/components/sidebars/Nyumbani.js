@@ -1,5 +1,5 @@
 import { Groups, Money, PersonAdd, PhoneAndroid } from "@mui/icons-material";
-import { Box, Card, Paper, Typography } from "@mui/material";
+import { Box, Card, Typography } from "@mui/material";
 import React from "react";
 
 function Nyumbani(props) {

@@ -69,7 +69,7 @@ function Login() {
     <Container maxWidth="sm">
       <Box
         sx={{
-          marginTop: 10,
+          marginTop: 5,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -138,9 +138,6 @@ function Login() {
           <Grid container>
             <Grid item xs>
               <Link to="/signup">Umesahau nywila?</Link>
-            </Grid>
-            <Grid item>
-              <Link to="/signup">Je, huna akaunti ya usharika?</Link>
             </Grid>
           </Grid>
         </Box>
