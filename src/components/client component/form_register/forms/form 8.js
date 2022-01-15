@@ -64,22 +64,23 @@ function Form8({ separator }) {
       <form onSubmit={handleadd}>
         <div className="shadow card p-4 col">
           <div className="h4">Jengo</div>
-          <div className="form-outline row mb-3">
-            <div className="input-group row mb-3">
-              <span className="input-group-text" id="basic-addon1">
-                Tshs.
-              </span>
-              <input
-                type="number"
-                name="jengo_amount"
-                required
-                className="form-control"
-                placeholder="Kiasi"
-              />
-            </div>
+
+          <div className="input-group form-outline mb-3">
+            <span className="input-group-text" id="basic-addon1">
+              Tshs.
+            </span>
+            <input
+              type="number"
+              name="jengo_amount"
+              required
+              className="form-control"
+              placeholder="Kiasi"
+            />
           </div>
+
           <div className="h4">Uwakili</div>
-          <div className="input-group row mb-3">
+
+          <div className="form-outline input-group mb-3">
             <span className="input-group-text" id="basic-addon1">
               Tshs.
             </span>
@@ -91,8 +92,9 @@ function Form8({ separator }) {
               placeholder="Kiasi"
             />
           </div>
+
           <div className="h4">Ahadi nyingine (kama ipo)</div>
-          <div className="input-group row mb-3">
+          <div className="form-outline input-group mb-3">
             <span className="input-group-text" id="basic-addon1">
               Tshs.
             </span>
@@ -103,6 +105,7 @@ function Form8({ separator }) {
               placeholder="Kiasi"
             />
           </div>
+
           <div>
             <button
               type="submit"
@@ -150,7 +153,7 @@ function Form8({ separator }) {
             </div>
             <div className="row">
               <div className="form-check col-sm-2">
-                <div className="row col">
+                <div className="col">
                   <input
                     className="form-check-input"
                     type="radio"

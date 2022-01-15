@@ -40,7 +40,7 @@ function Form5({ separator, nextform }) {
                 </div>
               </div>
             </div>
-            <div className="form-check row">
+            <div className="form-check">
               <input
                 className="form-check-input"
                 type="radio"
@@ -88,7 +88,7 @@ function Form5({ separator, nextform }) {
                 </div>
               </div>
             </div>
-            <div className="form-check row">
+            <div className="form-check ">
               <input
                 className="form-check-input"
                 type="radio"
@@ -111,7 +111,7 @@ function Form5({ separator, nextform }) {
             3. Unashiriki Sakramenti ya Meza ya Bwana?
           </div>
           <div className="col-sm-4">
-            <div className="form-check row">
+            <div className="form-check ">
               <input
                 className="form-check-input"
                 type="radio"
@@ -124,7 +124,7 @@ function Form5({ separator, nextform }) {
                 Ndiyo
               </label>
             </div>
-            <div className="form-check row">
+            <div className="form-check ">
               <input
                 className="form-check-input"
                 type="radio"

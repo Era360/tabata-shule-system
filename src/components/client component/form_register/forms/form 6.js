@@ -46,7 +46,7 @@ function Form6({ separator, nextform }) {
             </div>
             <div className="row">
               <div className="form-check col-sm-2">
-                <div className="row col">
+                <div className="col">
                   <input
                     className="form-check-input"
                     type="radio"

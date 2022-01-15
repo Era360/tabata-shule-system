@@ -139,7 +139,7 @@ function Form1({ separator, nextform }) {
           <div className="col-3">6. Aina ya ndoa</div>
           <div className="col-9">
             <div className="row">
-              <div className="form-check">
+              <div className="form-check col">
                 <input
                   className="form-check-input"
                   type="radio"
@@ -151,7 +151,7 @@ function Form1({ separator, nextform }) {
                   ndoa ya kikristo
                 </label>
               </div>
-              <div className="m-auto">
+              <div className="m-auto col">
                 <label className="col ">Tarehe ya kufunga ndoa</label>
                 <input
                   type="date"
