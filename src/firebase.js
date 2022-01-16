@@ -2,6 +2,13 @@
 // import "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+
+// import * as admin from "firebase-admin";
+// export const admin = require("firebase-admin");
+// const admin_app = admin.initializeApp({
+//   credential: admin.credential.applicationDefault(),
+// });
 
 const app = initializeApp({
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -12,5 +19,6 @@ const app = initializeApp({
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
 });
 
+export const db = getFirestore();
 export const auth = getAuth();
 export default app;

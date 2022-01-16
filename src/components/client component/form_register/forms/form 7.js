@@ -21,7 +21,7 @@ function Form7({ separator, nextform }) {
             value=""
             id="flexCheckDefault"
           />
-          <label className="form-check-label" htmlhtmlFor="flexCheckDefault">
+          <label className="form-check-label" htmlFor="flexCheckDefault">
             1. Fellowship
           </label>
         </div>

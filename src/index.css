@@ -170,6 +170,23 @@ p {
   transition: var(--transition);
   border-radius: var(--radius);
 }
+.kiongozi-btn {
+  background: transparent;
+  border-color: transparent;
+  font-size: 1rem;
+  margin: 0 0.5rem;
+  letter-spacing: 2px;
+  padding: 0.375rem 0.75rem;
+  color: #ffffff;
+  cursor: pointer;
+  transition: var(--transition);
+  border-radius: var(--radius);
+}
+.kiongozi-btn:hover {
+  background: #e7ebff;
+  color: #000;
+}
+
 .filter-btn {
   background: transparent;
   border-color: transparent;

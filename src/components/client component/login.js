@@ -27,23 +27,17 @@ function Login() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    // const data = new FormData(e.target);
     try {
       setLoading(true);
-
-      const userCred = await signInWithEmailAndPassword(
+      await signInWithEmailAndPassword(
         auth,
         emailRef.current.value,
         passwordRef.current.value
       );
-      //signed in
-      const user = userCred.user;
-      console.log(user.email);
-      navigate("/");
+      navigate("/app");
     } catch (error) {
       const errorCode = error.code;
       setError(errorCode);
-      // console.log(errorCode);
     }
     setLoading(false);
   }
@@ -104,9 +98,9 @@ function Login() {
                             onChange={handleChange("password")}
                             ref={passwordRef}
                           />
-                          <span
+                          <button
+                            type="button"
                             className="input-group-text"
-                            id="basic-addon1"
                             onClick={handleClickShowPassword}
                           >
                             {values.showPassword ? (
@@ -114,7 +108,7 @@ function Login() {
                             ) : (
                               <EyeFill />
                             )}
-                          </span>
+                          </button>
                         </div>
                       </div>
 
