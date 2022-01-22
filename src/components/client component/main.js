@@ -32,8 +32,14 @@ function Main(props) {
   // };
   let navigate = useNavigate();
   // console.log(getCurrentUser().uid);
-  let result = userIsAdmin(getCurrentUser());
-  console.log(result);
+  userIsAdmin(getCurrentUser())
+    .then(function () {
+      console.log("yes");
+    })
+    .catch(function () {
+      console.log("no");
+    });
+  // console.log(result);
   useEffect(() => {
     setshowKiongozi(userIsAdmin(getCurrentUser()));
   }, []);
